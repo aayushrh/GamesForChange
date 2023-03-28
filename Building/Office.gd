@@ -1,8 +1,11 @@
 extends Buildings
 class_name Office
 
+var upgradeRad
+
 func _ready():
 	shape = RectangleShape2D.new()
+	upgradeRad = GameConstants.upgradeRadOffice
 	shape.extents = GameConstants.officeExtents
 	sell_money = GameConstants.sellOffice
 	pollution = 2
@@ -11,6 +14,7 @@ func _ready():
 	$Timer.start(GameConstants.turnTime)
 
 func _process(delta):
+	update()
 	if selected:
 		$Selection.visible = true
 	else:

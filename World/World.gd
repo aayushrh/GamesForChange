@@ -3,6 +3,7 @@ extends Node2D
 var dragging = false
 var selected = []
 var buildings = []
+var upgraders = []
 var drag_start = Vector2.ZERO
 var select_rect = RectangleShape2D.new()
 var can_spawn = true
@@ -72,6 +73,14 @@ func _unhandled_input(event):
 								i.pollution *= 1.5
 								i.energy *= 1.5
 								building.affected.append(i)
+						upgraders.append(building)
+					else:
+						for i in upgraders:
+							if(i.global_position.distance_to(building.global_position) <= i.upgradeRad):
+								building.money *= 1.5
+								building.pollution *= 1.5
+								building.energy *= 1.5
+								i.affected.append(building)
 					buildings.append(building)
 					Manager.mode = "Selection"
 			$Spawn_Timer.start(1)
