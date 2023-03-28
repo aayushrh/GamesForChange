@@ -1,0 +1,107 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://SceneChanger.gd" type="Script" id=1]
+
+[sub_resource type="Animation" id=1]
+resource_name = "RESET"
+length = 0.01
+tracks/0/type = "value"
+tracks/0/path = NodePath("Dissolve:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 0, 0.0117647, 0.027451, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Dissolve:rect_position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ) ]
+}
+
+[sub_resource type="Animation" id=2]
+resource_name = "dissolve"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("Dissolve:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 0, 0.0117647, 0.027451, 0 ), Color( 0, 0.0156863, 0.027451, 1 ) ]
+}
+
+[sub_resource type="Animation" id=3]
+resource_name = "slide_end"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("Dissolve:rect_position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ), Vector2( -648, -360 ) ]
+}
+
+[sub_resource type="Animation" id=4]
+resource_name = "slide_start"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("Dissolve:rect_position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 642, 363 ), Vector2( 0, 0 ) ]
+}
+
+[node name="SceneChanger" type="CanvasLayer"]
+script = ExtResource( 1 )
+
+[node name="Dissolve" type="ColorRect" parent="."]
+modulate = Color( 0, 0.0117647, 0.027451, 0 )
+margin_right = 3216.0
+margin_bottom = 1440.0
+rect_scale = Vector2( 0.25, 0.25 )
+mouse_filter = 2
+
+[node name="Slide" type="ColorRect" parent="."]
+visible = false
+modulate = Color( 0, 0.0117647, 0.027451, 1 )
+margin_left = 662.0
+margin_top = 372.0
+margin_right = 3638.0
+margin_bottom = 1824.0
+rect_rotation = -45.0
+rect_scale = Vector2( 0.25, 0.25 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/RESET = SubResource( 1 )
+anims/dissolve = SubResource( 2 )
+anims/slide_end = SubResource( 3 )
+anims/slide_start = SubResource( 4 )
+
+[node name="Tween" type="Tween" parent="."]

@@ -1,0 +1,415 @@
+[gd_scene load_steps=33 format=2]
+
+[ext_resource path="res://Icons/CoalPlant_Icon.tscn" type="PackedScene" id=1]
+[ext_resource path="res://World/World.gd" type="Script" id=2]
+[ext_resource path="res://World/UI.gd" type="Script" id=3]
+[ext_resource path="res://PanningCamera2D.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Art/Grass_2.png" type="Texture" id=5]
+[ext_resource path="res://Icons/Office_Icon.tscn" type="PackedScene" id=6]
+[ext_resource path="res://World/Quota.gd" type="Script" id=7]
+[ext_resource path="res://Art/money_1.png" type="Texture" id=8]
+[ext_resource path="res://Art/pollution.png" type="Texture" id=9]
+[ext_resource path="res://Art/energy.png" type="Texture" id=10]
+[ext_resource path="res://Icons/Park_Icon.tscn" type="PackedScene" id=11]
+[ext_resource path="res://Icons/Store_Icon.tscn" type="PackedScene" id=12]
+[ext_resource path="res://Icons/SolarPowerPlant_Icon.tscn" type="PackedScene" id=13]
+[ext_resource path="res://Icons/Factory_Icon.tscn" type="PackedScene" id=14]
+[ext_resource path="res://Icons/NuclearPowerPlant_Icon.tscn" type="PackedScene" id=15]
+[ext_resource path="res://Icons/AlgaeFarm_Icon.tscn" type="PackedScene" id=16]
+[ext_resource path="res://Icons/CarbonCapture_Icon.tscn" type="PackedScene" id=17]
+[ext_resource path="res://Icons/Hotel_Icon.tscn" type="PackedScene" id=18]
+[ext_resource path="res://Icons/WindPowerPlant_Icon.tscn" type="PackedScene" id=19]
+
+[sub_resource type="CapsuleShape2D" id=6]
+radius = 5.0
+height = 30.0
+
+[sub_resource type="CircleShape2D" id=10]
+
+[sub_resource type="CircleShape2D" id=12]
+
+[sub_resource type="CircleShape2D" id=14]
+radius = 15.0
+
+[sub_resource type="CircleShape2D" id=15]
+radius = 13.0
+
+[sub_resource type="CapsuleShape2D" id=8]
+
+[sub_resource type="CircleShape2D" id=11]
+radius = 35.0
+
+[sub_resource type="CircleShape2D" id=13]
+radius = 18.0
+
+[sub_resource type="CircleShape2D" id=16]
+radius = 13.0
+
+[sub_resource type="CircleShape2D" id=17]
+
+[sub_resource type="CircleShape2D" id=18]
+
+[sub_resource type="CircleShape2D" id=19]
+
+[sub_resource type="CapsuleShape2D" id=9]
+radius = 15.0
+height = 70.0
+
+[node name="World" type="Node2D"]
+script = ExtResource( 2 )
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="UI" type="Control" parent="CanvasLayer"]
+margin_right = 40.0
+margin_bottom = 40.0
+script = ExtResource( 3 )
+
+[node name="UICenter" type="ColorRect" parent="CanvasLayer/UI"]
+margin_left = 560.0
+margin_top = -3.0
+margin_right = 600.0
+margin_bottom = 178.0
+rect_scale = Vector2( 2, 2 )
+color = Color( 0.384314, 0.380392, 0.380392, 1 )
+
+[node name="Pollutors" type="TouchScreenButton" parent="CanvasLayer/UI/UICenter"]
+position = Vector2( -10, 0 )
+shape = SubResource( 6 )
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer/UI/UICenter/Pollutors"]
+margin_right = 10.0
+margin_bottom = 38.0
+color = Color( 0.305882, 0.305882, 0.305882, 1 )
+
+[node name="Label" type="Label" parent="CanvasLayer/UI/UICenter/Pollutors"]
+margin_left = 1.5
+margin_top = 32.0
+margin_right = 58.5
+margin_bottom = 63.0
+rect_rotation = -90.0
+rect_scale = Vector2( 0.5, 0.5 )
+text = "Pollutors
+"
+
+[node name="Upgrader" type="TouchScreenButton" parent="CanvasLayer/UI/UICenter"]
+position = Vector2( -10, 41.5 )
+shape = SubResource( 6 )
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer/UI/UICenter/Upgrader"]
+margin_right = 10.0
+margin_bottom = 38.0
+color = Color( 0.305882, 0.305882, 0.305882, 1 )
+
+[node name="Label" type="Label" parent="CanvasLayer/UI/UICenter/Upgrader"]
+margin_left = 1.5
+margin_top = 36.0
+margin_right = 66.5
+margin_bottom = 67.0
+rect_rotation = -90.0
+rect_scale = Vector2( 0.5, 0.5 )
+text = "Upgraders
+"
+
+[node name="NonPollutors2" type="TouchScreenButton" parent="CanvasLayer/UI/UICenter"]
+position = Vector2( -9.5, 85.5 )
+shape = SubResource( 6 )
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer/UI/UICenter/NonPollutors2"]
+margin_right = 10.0
+margin_bottom = 38.0
+color = Color( 0.305882, 0.305882, 0.305882, 1 )
+
+[node name="Label" type="Label" parent="CanvasLayer/UI/UICenter/NonPollutors2"]
+margin_left = 1.5
+margin_top = 36.0
+margin_right = 66.5
+margin_bottom = 67.0
+rect_rotation = -90.0
+rect_scale = Vector2( 0.4, 0.4 )
+text = "NonPollutors
+"
+
+[node name="PollutorsIcons" type="Node2D" parent="CanvasLayer/UI/UICenter"]
+visible = false
+position = Vector2( 0.5, 6.5 )
+
+[node name="CoalPlant_Icon" parent="CanvasLayer/UI/UICenter/PollutorsIcons" instance=ExtResource( 1 )]
+position = Vector2( 18, 11 )
+
+[node name="CoalPlant" type="TouchScreenButton" parent="CanvasLayer/UI/UICenter/PollutorsIcons/CoalPlant_Icon"]
+position = Vector2( -9, -11 )
+shape = SubResource( 10 )
+
+[node name="Store_Icon" parent="CanvasLayer/UI/UICenter/PollutorsIcons" instance=ExtResource( 12 )]
+position = Vector2( 17, 33 )
+
+[node name="Store" type="TouchScreenButton" parent="CanvasLayer/UI/UICenter/PollutorsIcons/Store_Icon"]
+position = Vector2( -9.5, -10.5 )
+shape = SubResource( 12 )
+
+[node name="Factory_Icon" parent="CanvasLayer/UI/UICenter/PollutorsIcons" instance=ExtResource( 14 )]
+position = Vector2( 18.5, 57.5 )
+
+[node name="Factory2" type="TouchScreenButton" parent="CanvasLayer/UI/UICenter/PollutorsIcons/Factory_Icon"]
+position = Vector2( -15, -11.5 )
+shape = SubResource( 14 )
+
+[node name="NuclearPowerPlant_Icon" parent="CanvasLayer/UI/UICenter/PollutorsIcons" instance=ExtResource( 15 )]
+position = Vector2( 19, 87.5 )
+
+[node name="Nuclear" type="TouchScreenButton" parent="CanvasLayer/UI/UICenter/PollutorsIcons/NuclearPowerPlant_Icon"]
+position = Vector2( -12.5, -10.5 )
+shape = SubResource( 15 )
+
+[node name="UpgradersIcons" type="Node2D" parent="CanvasLayer/UI/UICenter"]
+visible = false
+
+[node name="Office_Icon" parent="CanvasLayer/UI/UICenter/UpgradersIcons" instance=ExtResource( 6 )]
+position = Vector2( 19, 16 )
+
+[node name="Office" type="TouchScreenButton" parent="CanvasLayer/UI/UICenter/UpgradersIcons/Office_Icon"]
+position = Vector2( -19, 11.5 )
+rotation = -1.5708
+shape = SubResource( 8 )
+
+[node name="NonPollutorsIcons" type="Node2D" parent="CanvasLayer/UI/UICenter"]
+visible = false
+
+[node name="Park_Icon" parent="CanvasLayer/UI/UICenter/NonPollutorsIcons" instance=ExtResource( 11 )]
+position = Vector2( 18.5, 13.5 )
+scale = Vector2( 0.5, 0.5 )
+
+[node name="Park2" type="TouchScreenButton" parent="CanvasLayer/UI/UICenter/NonPollutorsIcons/Park_Icon"]
+position = Vector2( -32, -27 )
+shape = SubResource( 11 )
+
+[node name="SolarPowerPlant_Icon" parent="CanvasLayer/UI/UICenter/NonPollutorsIcons" instance=ExtResource( 13 )]
+position = Vector2( 19.5, 49.5 )
+
+[node name="SolarPowerPlant" type="TouchScreenButton" parent="CanvasLayer/UI/UICenter/NonPollutorsIcons/SolarPowerPlant_Icon"]
+position = Vector2( -18, -17.5 )
+shape = SubResource( 13 )
+
+[node name="AlgaeFarm_Icon" parent="CanvasLayer/UI/UICenter/NonPollutorsIcons" instance=ExtResource( 16 )]
+position = Vector2( 19.5, 78 )
+
+[node name="Algae" type="TouchScreenButton" parent="CanvasLayer/UI/UICenter/NonPollutorsIcons/AlgaeFarm_Icon"]
+position = Vector2( -13, -12.5 )
+shape = SubResource( 16 )
+
+[node name="CarbonCapture_Icon" parent="CanvasLayer/UI/UICenter/NonPollutorsIcons" instance=ExtResource( 17 )]
+position = Vector2( 19.5, 106.5 )
+
+[node name="CarbonCapture" type="TouchScreenButton" parent="CanvasLayer/UI/UICenter/NonPollutorsIcons/CarbonCapture_Icon"]
+position = Vector2( -9.5, -12 )
+shape = SubResource( 17 )
+
+[node name="Hotel_Icon" parent="CanvasLayer/UI/UICenter/NonPollutorsIcons" instance=ExtResource( 18 )]
+position = Vector2( 19.5, 127 )
+
+[node name="TouchScreenButton" type="TouchScreenButton" parent="CanvasLayer/UI/UICenter/NonPollutorsIcons/Hotel_Icon"]
+position = Vector2( -9.5, -8.5 )
+shape = SubResource( 18 )
+
+[node name="WindPowerPlant_Icon" parent="CanvasLayer/UI/UICenter/NonPollutorsIcons" instance=ExtResource( 19 )]
+position = Vector2( 20, 146.5 )
+
+[node name="Wind" type="TouchScreenButton" parent="CanvasLayer/UI/UICenter/NonPollutorsIcons/WindPowerPlant_Icon"]
+position = Vector2( -9.5, -4.5 )
+shape = SubResource( 19 )
+
+[node name="Money" type="Node2D" parent="CanvasLayer/UI"]
+position = Vector2( 15, 12 )
+
+[node name="Label" type="Label" parent="CanvasLayer/UI/Money"]
+margin_left = 36.0
+margin_right = 90.0
+margin_bottom = 15.0
+rect_rotation = 0.141596
+rect_scale = Vector2( 1.5, 1.5 )
+text = "eeee"
+
+[node name="Sprite" type="Sprite" parent="CanvasLayer/UI/Money"]
+position = Vector2( 17, 9 )
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 8 )
+
+[node name="MoneyDelta" type="Node2D" parent="CanvasLayer/UI"]
+position = Vector2( 257, 11 )
+
+[node name="Label" type="Label" parent="CanvasLayer/UI/MoneyDelta"]
+margin_left = 36.0
+margin_right = 213.0
+margin_bottom = 52.0
+rect_rotation = 0.141596
+rect_scale = Vector2( 1.5, 1.5 )
+text = "eee"
+
+[node name="Sprite" type="Sprite" parent="CanvasLayer/UI/MoneyDelta"]
+position = Vector2( 17, 9 )
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 8 )
+
+[node name="Pollution" type="Node2D" parent="CanvasLayer/UI"]
+
+[node name="Pollution" type="Label" parent="CanvasLayer/UI/Pollution"]
+margin_left = 47.0
+margin_top = 44.0
+margin_right = 87.0
+margin_bottom = 58.0
+rect_scale = Vector2( 1.5, 1.5 )
+text = "eeee"
+
+[node name="Pollution2" type="Sprite" parent="CanvasLayer/UI/Pollution"]
+position = Vector2( 29, 55 )
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 9 )
+
+[node name="PollutionDelta" type="Node2D" parent="CanvasLayer/UI"]
+position = Vector2( -81, -2 )
+
+[node name="PollutionDelta" type="Label" parent="CanvasLayer/UI/PollutionDelta"]
+anchor_right = 0.075
+margin_left = 237.0
+margin_top = 15.0
+margin_right = 271.0
+margin_bottom = 29.0
+rect_scale = Vector2( 1.5, 1.5 )
+text = "eee"
+
+[node name="Pollution" type="Sprite" parent="CanvasLayer/UI/PollutionDelta"]
+position = Vector2( 219, 25 )
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 9 )
+
+[node name="Energy" type="Node2D" parent="CanvasLayer/UI"]
+
+[node name="Energy" type="Label" parent="CanvasLayer/UI/Energy"]
+margin_left = 48.0
+margin_top = 75.0
+margin_right = 88.0
+margin_bottom = 89.0
+rect_scale = Vector2( 1.5, 1.5 )
+text = "eeeee"
+
+[node name="Energy2" type="Sprite" parent="CanvasLayer/UI/Energy"]
+position = Vector2( 28, 86 )
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 10 )
+
+[node name="EnergyDelta" type="Node2D" parent="CanvasLayer/UI"]
+
+[node name="EnergyDelta" type="Label" parent="CanvasLayer/UI/EnergyDelta"]
+margin_left = 433.0
+margin_top = 12.0
+margin_right = 513.0
+margin_bottom = 26.0
+rect_scale = Vector2( 1.5, 1.5 )
+text = "eee"
+
+[node name="Energy" type="Sprite" parent="CanvasLayer/UI/EnergyDelta"]
+position = Vector2( 414, 22 )
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 10 )
+
+[node name="Timer" type="Timer" parent="CanvasLayer/UI"]
+
+[node name="Quota" type="ColorRect" parent="CanvasLayer"]
+visible = false
+margin_left = 102.0
+margin_top = 42.0
+margin_right = 500.0
+margin_bottom = 320.0
+color = Color( 0.317647, 0.317647, 0.317647, 1 )
+script = ExtResource( 7 )
+
+[node name="New Quota" type="Label" parent="CanvasLayer/Quota"]
+margin_left = 118.0
+margin_top = 18.0
+margin_right = 200.0
+margin_bottom = 32.0
+rect_scale = Vector2( 2, 2 )
+text = "NEW QUOTA"
+
+[node name="Energy" type="Label" parent="CanvasLayer/Quota"]
+margin_left = 58.0
+margin_top = 76.0
+margin_right = 361.0
+margin_bottom = 126.0
+text = "After 2 minute you need to be gaining {} energy"
+
+[node name="Pollution" type="Label" parent="CanvasLayer/Quota"]
+margin_left = 59.0
+margin_top = 144.0
+margin_right = 297.0
+margin_bottom = 158.0
+text = "And also losing polltion by {} per turn"
+
+[node name="GL" type="Label" parent="CanvasLayer/Quota"]
+margin_left = 58.0
+margin_top = 211.0
+margin_right = 216.0
+margin_bottom = 225.0
+text = "Good Luck, you'll need it"
+
+[node name="Exit" type="ColorRect" parent="CanvasLayer/Quota"]
+margin_left = 277.0
+margin_top = 232.0
+margin_right = 370.0
+margin_bottom = 256.0
+color = Color( 0.243137, 0.243137, 0.243137, 1 )
+
+[node name="Label" type="Label" parent="CanvasLayer/Quota/Exit"]
+margin_left = 33.0
+margin_top = 5.0
+margin_right = 73.0
+margin_bottom = 19.0
+text = "EXIT"
+
+[node name="TouchScreenButton" type="TouchScreenButton" parent="CanvasLayer/Quota/Exit"]
+position = Vector2( -1, 27 )
+rotation = -1.5708
+shape = SubResource( 9 )
+
+[node name="Spawn_Timer" type="Timer" parent="."]
+
+[node name="Node2D" type="Node2D" parent="."]
+z_index = -1
+
+[node name="TextureRect" type="TextureRect" parent="Node2D"]
+margin_left = -994.0
+margin_top = -694.0
+margin_right = 1181.0
+margin_bottom = 862.0
+mouse_filter = 2
+texture = ExtResource( 5 )
+stretch_mode = 2
+
+[node name="PanningCamera2D" parent="." instance=ExtResource( 4 )]
+position = Vector2( 2, -1 )
+
+[node name="QuotaTimer" type="Timer" parent="."]
+wait_time = 0.25
+autostart = true
+
+[node name="YSort" type="YSort" parent="."]
+
+[connection signal="pressed" from="CanvasLayer/UI/UICenter/Pollutors" to="." method="_on_Pollutors_pressed"]
+[connection signal="pressed" from="CanvasLayer/UI/UICenter/Upgrader" to="." method="_on_Upgrader_pressed"]
+[connection signal="pressed" from="CanvasLayer/UI/UICenter/NonPollutors2" to="." method="_on_NonPollutors2_pressed"]
+[connection signal="pressed" from="CanvasLayer/UI/UICenter/PollutorsIcons/CoalPlant_Icon/CoalPlant" to="." method="_on_CoalPlant_pressed"]
+[connection signal="pressed" from="CanvasLayer/UI/UICenter/PollutorsIcons/Store_Icon/Store" to="." method="_on_Store_pressed"]
+[connection signal="pressed" from="CanvasLayer/UI/UICenter/PollutorsIcons/Factory_Icon/Factory2" to="." method="_on_Factory2_pressed"]
+[connection signal="pressed" from="CanvasLayer/UI/UICenter/PollutorsIcons/NuclearPowerPlant_Icon/Nuclear" to="." method="_on_Nuclear_pressed"]
+[connection signal="pressed" from="CanvasLayer/UI/UICenter/UpgradersIcons/Office_Icon/Office" to="." method="_on_Office_pressed"]
+[connection signal="pressed" from="CanvasLayer/UI/UICenter/NonPollutorsIcons/Park_Icon/Park2" to="." method="_on_Park2_pressed"]
+[connection signal="pressed" from="CanvasLayer/UI/UICenter/NonPollutorsIcons/SolarPowerPlant_Icon/SolarPowerPlant" to="." method="_on_SolarPowerPlant_pressed"]
+[connection signal="pressed" from="CanvasLayer/UI/UICenter/NonPollutorsIcons/AlgaeFarm_Icon/Algae" to="." method="_on_Algae_pressed"]
+[connection signal="pressed" from="CanvasLayer/UI/UICenter/NonPollutorsIcons/CarbonCapture_Icon/CarbonCapture" to="." method="_on_CarbonCapture_pressed"]
+[connection signal="pressed" from="CanvasLayer/UI/UICenter/NonPollutorsIcons/Hotel_Icon/TouchScreenButton" to="." method="_on_TouchScreenButton_pressed"]
+[connection signal="pressed" from="CanvasLayer/UI/UICenter/NonPollutorsIcons/WindPowerPlant_Icon/Wind" to="." method="_on_Wind_pressed"]
+[connection signal="timeout" from="CanvasLayer/UI/Timer" to="CanvasLayer/UI" method="_on_Timer_timeout"]
+[connection signal="pressed" from="CanvasLayer/Quota/Exit/TouchScreenButton" to="CanvasLayer/Quota" method="_on_TouchScreenButton_pressed"]
+[connection signal="timeout" from="Spawn_Timer" to="." method="_on_Spawn_Timer_timeout"]
+[connection signal="timeout" from="QuotaTimer" to="." method="_on_QuotaTimer_timeout"]

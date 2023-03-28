@@ -1,0 +1,99 @@
+; Engine configuration file.
+; It's best edited using the editor UI and not directly,
+; since the parameters that go here are not all obvious.
+;
+; Format:
+;   [section] ; section goes between []
+;   param=value ; assign values to parameters
+
+config_version=4
+
+_global_script_classes=[ {
+"base": "StaticBody2D",
+"class": "Buildings",
+"language": "GDScript",
+"path": "res://Building/Buildings.gd"
+}, {
+"base": "Buildings",
+"class": "Office",
+"language": "GDScript",
+"path": "res://Building/Office.gd"
+}, {
+"base": "Camera2D",
+"class": "PanningCamera2D",
+"language": "GDScript",
+"path": "res://PanningCamera2D.gd"
+} ]
+_global_script_class_icons={
+"Buildings": "",
+"Office": "",
+"PanningCamera2D": ""
+}
+
+[application]
+
+config/name="Age Of Empires"
+run/main_scene="res://World/StartingScreen.tscn"
+
+[autoload]
+
+GameConstants="*res://GameConstants.gd"
+Manager="*res://Manager.gd"
+SceneChanger="*res://SceneChanger.tscn"
+
+[display]
+
+window/size/width=640
+window/size/height=360
+window/size/test_width=1280
+window/size/test_height=720
+window/stretch/mode="2d"
+window/stretch/aspect="keep"
+
+[global]
+
+window=false
+Window=false
+
+[input]
+
+Click={
+"deadzone": 0.5,
+"events": [ Object(InputEventMouseButton,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"button_mask":0,"position":Vector2( 0, 0 ),"global_position":Vector2( 0, 0 ),"factor":1.0,"button_index":1,"pressed":false,"doubleclick":false,"script":null)
+ ]
+}
+sell={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":16777220,"physical_scancode":0,"unicode":0,"echo":false,"script":null)
+ ]
+}
+right_click={
+"deadzone": 0.5,
+"events": [ Object(InputEventMouseButton,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"button_mask":0,"position":Vector2( 0, 0 ),"global_position":Vector2( 0, 0 ),"factor":1.0,"button_index":2,"pressed":false,"doubleclick":false,"script":null)
+ ]
+}
+cancel={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":0,"physical_scancode":81,"unicode":0,"echo":false,"script":null)
+ ]
+}
+
+[input_devices]
+
+pointing/emulate_touch_from_mouse=true
+
+[layer_names]
+
+2d_physics/layer_1="World"
+2d_physics/layer_2="Allies"
+2d_physics/layer_3="Enemies"
+2d_physics/layer_4="AlliesHurtbox"
+2d_physics/layer_5="EnemiesHurtBox"
+
+[physics]
+
+common/enable_pause_aware_picking=true
+
+[rendering]
+
+environment/default_environment="res://default_env.tres"
