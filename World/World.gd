@@ -97,12 +97,17 @@ func _process(delta):
 		energy += b.energy
 	pollutionDelta = pollution
 	energyDelta = energy
+	
+	pollutionDelta = round(pollutionDelta * 100)/100
+	
 	if(Input.is_action_just_pressed("cancel")):
 		Manager.mode = "Selection"
 	if(pollution > 0):
 		$CanvasLayer/UI/PollutionDelta/PollutionDelta.text = "+" + str(pollution)
 	else:
 		$CanvasLayer/UI/PollutionDelta/PollutionDelta.text = str(pollution)
+	
+	money = round(money * 100)/100
 	
 	var moneystr = ""
 	if(abs(money) >= 1000000):
@@ -116,6 +121,8 @@ func _process(delta):
 		$CanvasLayer/UI/MoneyDelta/Label.text = "+" + moneystr
 	else:
 		$CanvasLayer/UI/MoneyDelta/Label.text = moneystr
+	
+	energy = round(energy * 100)/100
 	
 	if(energy > 0):
 		$CanvasLayer/UI/EnergyDelta/EnergyDelta.text = "+" + str(energy)
@@ -354,6 +361,9 @@ func _on_QuotaTimer_timeout():
 	$QuotaTimer.start(GameConstants.quotaTime)
 	if(pollutionDelta > pollutionReq or energyDelta < energyReq):
 		SceneChanger.change_scene_to(load("res://World/StartingScreen.tscn"))
+		Manager.money = 5_000_000
+		Manager.pollution = 0
+		Manager.energy = 0
 	else:
 		Manager.money += -pollutionReq*100
 	if(pollutionReq > 0):

@@ -4,8 +4,8 @@ func _ready():
 	shape = RectangleShape2D.new()
 	shape.extents = GameConstants.parkExtents
 	sell_money = GameConstants.sellPark
-	pollution = -4
-	money = 1_000
+	pollution = -4.0/60.0
+	money = 1_000.0/60.0
 	energy = 0
 	$Timer.start(GameConstants.turnTime)
 

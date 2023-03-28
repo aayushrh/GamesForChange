@@ -4,9 +4,9 @@ func _ready():
 	shape = RectangleShape2D.new()
 	shape.extents = GameConstants.algaeFarmExtents
 	sell_money = GameConstants.sellAlgaeFarm
-	pollution = -30
-	money = 40_000
-	energy = -5
+	pollution = -30.0/60.0
+	money = 40_000.0/60.0
+	energy = -5.0/60.0
 	$Timer.start(GameConstants.turnTime)
 
 func _process(delta):
