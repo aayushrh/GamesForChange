@@ -91,7 +91,7 @@ func _process(delta):
 	var pollution = 0
 	var money = 0
 	var energy = 0
-	for b in buildings :
+	for b in buildings:
 		pollution += b.pollution
 		money += b.money
 		energy += b.energy
@@ -99,13 +99,12 @@ func _process(delta):
 	energyDelta = energy
 	
 	pollutionDelta = round(pollutionDelta * 100)/100
-	
 	if(Input.is_action_just_pressed("cancel")):
 		Manager.mode = "Selection"
 	if(pollution > 0):
-		$CanvasLayer/UI/PollutionDelta/PollutionDelta.text = "+" + str(pollution)
+		$CanvasLayer/UI/VBoxContainer/Delta/Pollution.text = "+" + str(round(pollutionDelta))
 	else:
-		$CanvasLayer/UI/PollutionDelta/PollutionDelta.text = str(pollution)
+		$CanvasLayer/UI/VBoxContainer/Delta/Pollution.text = str(round(pollutionDelta))
 	
 	money = round(money * 100)/100
 	
@@ -118,17 +117,22 @@ func _process(delta):
 		moneystr = str(money)
 	
 	if(money > 0):
-		$CanvasLayer/UI/MoneyDelta/Label.text = "+" + moneystr
+		$CanvasLayer/UI/VBoxContainer/Delta/Money.text = "+" + moneystr
 	else:
-		$CanvasLayer/UI/MoneyDelta/Label.text = moneystr
+		$CanvasLayer/UI/VBoxContainer/Delta/Money.text = moneystr
 	
 	energy = round(energy * 100)/100
 	
 	if(energy > 0):
-		$CanvasLayer/UI/EnergyDelta/EnergyDelta.text = "+" + str(energy)
+		$CanvasLayer/UI/VBoxContainer/Delta/Energy.text = "+" + str(round(energy))
 	else:
-		$CanvasLayer/UI/EnergyDelta/EnergyDelta.text = str(energy)
+		$CanvasLayer/UI/VBoxContainer/Delta/Energy.text = str(round(energy))
 	update()
+	
+	$CanvasLayer/UI/VBoxContainer/Total/Money.text = str(round(Manager.money*100)/100)
+	$CanvasLayer/UI/VBoxContainer/Total/Energy.text = str(round(Manager.energy))
+	$CanvasLayer/UI/VBoxContainer/Total/Pollution.text = str(round(Manager.pollution))
+	
 	if(Input.is_action_just_pressed("sell")):
 		_on_Sell_pressed()
 	
@@ -271,6 +275,7 @@ func _draw():
 		if Manager.mode == "Selection":
 			draw_rect(Rect2(drag_start, get_global_mouse_position() - drag_start), Color(0, 0, 0.5), false)
 	if Manager.mode != "Selection" && Manager.mode != "Move":
+			print(Manager.mode)
 			var mouse_pos = get_global_mouse_position()
 			var pos = Vector2(fround(mouse_pos.x), fround(mouse_pos.y))
 			var building = _getBuilding()
@@ -337,25 +342,9 @@ func _on_Sell_pressed():
 		dragging = false
 		selected = []
 
-func _hideAll():
-	$CanvasLayer/UI/UICenter/PollutorsIcons.visible = false
-	$CanvasLayer/UI/UICenter/UpgradersIcons.visible = false
-	$CanvasLayer/UI/UICenter/NonPollutorsIcons.visible = false
-
-func _on_Office_pressed():
-	Manager.mode = "Office"
-
-func _on_CoalPlant_pressed():
-	Manager.mode = "CoalPlant"
-
-func _on_Park2_pressed():
-	Manager.mode = "Park"
-
-func _on_Store_pressed():
-	Manager.mode = "Store"
-
-func _on_SolarPowerPlant_pressed():
-	Manager.mode = "SolarPowerPlant"
+func pressed(name):
+	Manager.mode = name
+	print("x")
 
 func _on_QuotaTimer_timeout():
 	$QuotaTimer.start(GameConstants.quotaTime)
@@ -375,36 +364,6 @@ func _on_QuotaTimer_timeout():
 	$CanvasLayer/Quota.visible = true
 	$CanvasLayer/Quota/Energy.text = ("After 2 minute you need to be gaining " + str(energyReq) + " energy")
 	$CanvasLayer/Quota/Pollution.text = "And also losing polltion by " + str(-pollutionReq) + " per turn"
-
 func _on_Spawn_Timer_timeout():
 	can_spawn = true
 
-func _on_NonPollutors2_pressed():
-	_hideAll()
-	$CanvasLayer/UI/UICenter/NonPollutorsIcons.visible = true
-
-func _on_Pollutors_pressed():
-	_hideAll()
-	$CanvasLayer/UI/UICenter/PollutorsIcons.visible = true
-
-func _on_Upgrader_pressed():
-	_hideAll()
-	$CanvasLayer/UI/UICenter/UpgradersIcons.visible = true
-
-func _on_Factory2_pressed():
-	Manager.mode = "Factory"
-
-func _on_Nuclear_pressed():
-	Manager.mode = "NuclearPowerPlant"
-
-func _on_Algae_pressed():
-	Manager.mode = "AlgaeFarm"
-
-func _on_CarbonCapture_pressed():
-	Manager.mode = "CarbonCapture"
-
-func _on_TouchScreenButton_pressed():
-	Manager.mode = "Hotel"
-
-func _on_Wind_pressed():
-	Manager.mode = "WindPowerPlant"
