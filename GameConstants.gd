@@ -5,6 +5,7 @@ var upgradeRadWarehouse = 320
 
 var quotaTime = 120
 
+
 var coalPlantExtents = Vector2(23, 15)
 var officeExtents = Vector2(15, 15)
 var parkExtents = Vector2(23, 23)
