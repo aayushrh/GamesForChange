@@ -22,7 +22,7 @@ func _process(delta):
 
 func _draw():
 	for i in affected:
-		draw_line(Vector2.ZERO, i.global_position - global_position, Color(255, 255, 255), 1)
+		draw_line(Vector2.ZERO, i.global_position - global_position, Color(255, 255, 255), 3)
 
 func _on_Timer_timeout():
 	Manager.pollution += pollution

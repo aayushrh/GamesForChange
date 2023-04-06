@@ -15,12 +15,13 @@ font_data = SubResource( 2 )
 
 [node name="Icon" type="TextureRect"]
 mouse_default_cursor_shape = 6
+stretch_mode = 1
 script = ExtResource( 1 )
 
 [node name="HoverUI" type="Panel" parent="."]
 self_modulate = Color( 1, 1, 1, 0.501961 )
-margin_right = 69.0
-margin_bottom = 40.0
+margin_right = 84.0
+margin_bottom = 47.0
 grow_horizontal = 0
 mouse_filter = 2
 size_flags_horizontal = 3
@@ -42,25 +43,34 @@ text = "Name"
 [node name="Cost" type="Label" parent="HoverUI/VBoxContainer"]
 margin_top = 12.0
 margin_right = 40.0
-margin_bottom = 21.0
+margin_bottom = 20.0
 size_flags_vertical = 3
 custom_colors/font_color = Color( 1, 1, 1, 1 )
 custom_fonts/font = SubResource( 4 )
 text = "Cost:"
 
-[node name="Pollution" type="Label" parent="HoverUI/VBoxContainer"]
-margin_top = 21.0
+[node name="Money" type="Label" parent="HoverUI/VBoxContainer"]
+margin_top = 20.0
 margin_right = 40.0
-margin_bottom = 30.0
+margin_bottom = 28.0
+size_flags_vertical = 3
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_fonts/font = SubResource( 4 )
+text = "Money:"
+
+[node name="Pollution" type="Label" parent="HoverUI/VBoxContainer"]
+margin_top = 28.0
+margin_right = 40.0
+margin_bottom = 36.0
 size_flags_vertical = 3
 custom_colors/font_color = Color( 1, 1, 1, 1 )
 custom_fonts/font = SubResource( 4 )
 text = "Pollution"
 
 [node name="Energy" type="Label" parent="HoverUI/VBoxContainer"]
-margin_top = 30.0
+margin_top = 36.0
 margin_right = 40.0
-margin_bottom = 40.0
+margin_bottom = 44.0
 size_flags_vertical = 3
 custom_colors/font_color = Color( 1, 1, 1, 1 )
 custom_fonts/font = SubResource( 4 )
