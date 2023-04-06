@@ -27,6 +27,12 @@ onready var Green_Box = preload("res://Misc//Green_Box.tscn")
 onready var Red_Box = preload("res://Misc//Red_Box.tscn")
 onready var Upgraders = preload("res://Misc//Upgraders.tscn")
 
+func _ready():
+	$PanningCamera2D.limit_top = $LimitTopRight.global_position.y
+	$PanningCamera2D.limit_right = $LimitTopRight.global_position.x
+	$PanningCamera2D.limit_bottom = $LimitBottomLeft.global_position.y
+	$PanningCamera2D.limit_left = $LimitBottomLeft.global_position.x
+
 func _unhandled_input(event):
 	_draw()
 	if Manager.mode == "Selection":
@@ -129,7 +135,15 @@ func _process(delta):
 		$CanvasLayer/UI/VBoxContainer/Delta/Energy.text = str(round(energy))
 	update()
 	
-	$CanvasLayer/UI/VBoxContainer/Total/Money.text = str(round(Manager.money*100)/100)
+	moneystr = ""
+	if(abs(Manager.money) >= 1000000):
+		moneystr = str(round(Manager.money/1000000)) + " M"
+	elif(abs(Manager.money) >= 1000):
+		moneystr = str(round(Manager.money/1000)) + " K"
+	else:
+		moneystr = str(Manager.money)
+	
+	$CanvasLayer/UI/VBoxContainer/Total/Money.text = moneystr
 	$CanvasLayer/UI/VBoxContainer/Total/Energy.text = str(round(Manager.energy))
 	$CanvasLayer/UI/VBoxContainer/Total/Pollution.text = str(round(Manager.pollution))
 	
