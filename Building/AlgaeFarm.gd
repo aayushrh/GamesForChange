@@ -20,8 +20,8 @@ func _on_Timer_timeout():
 	Manager.pollution += pollution
 	Manager.money += money
 	Manager.energy += energy
-	var text = popup.instance()
-	add_child(text)
-	text.set_position(position)
-	text.set_text("+$")# + money + "")
+#	var text = popup.instance()
+#	add_child(text)
+#	text.set_position(position)
+#	text.set_text("+$")# + money + "")
 	$Timer.start(GameConstants.turnTime)
