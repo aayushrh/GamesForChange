@@ -69,7 +69,6 @@ margin_bottom = 358.0
 tab_align = 0
 
 [node name="Income" type="Tabs" parent="CanvasLayer/UI/TabContainer"]
-visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 4.0
@@ -109,6 +108,10 @@ margin_right = 294.0
 margin_bottom = 81.0
 texture = ExtResource( 15 )
 icon = "Factory"
+cost = "3M"
+pollution = "500"
+energy = "-450 kW"
+money = "1M/yr"
 
 [node name="Hotel" parent="CanvasLayer/UI/TabContainer/Income/Organizer" instance=ExtResource( 3 )]
 margin_left = 309.0
@@ -116,6 +119,10 @@ margin_right = 371.0
 margin_bottom = 80.0
 texture = ExtResource( 16 )
 icon = "Hotel"
+cost = "500k"
+pollution = "-2 ton/yr"
+energy = "-5 kW"
+money = "80k/yr"
 
 [node name="EnergyMakers" type="Tabs" parent="CanvasLayer/UI/TabContainer"]
 visible = false
@@ -134,6 +141,10 @@ margin_right = 85.0
 margin_bottom = 85.0
 texture = ExtResource( 9 )
 icon = "CoalPlant"
+cost = "1.75M"
+pollution = "4k ton/yr"
+energy = "500 kW"
+money = "-20k/yr"
 
 [node name="Solar" parent="CanvasLayer/UI/TabContainer/EnergyMakers/Node2D" instance=ExtResource( 3 )]
 margin_left = 101.0
@@ -141,6 +152,10 @@ margin_right = 156.0
 margin_bottom = 85.0
 texture = ExtResource( 17 )
 icon = "SolarPowerPlant"
+cost = "250k"
+pollution = "0"
+energy = "100 kW"
+money = "-2k/yr"
 
 [node name="Wind" parent="CanvasLayer/UI/TabContainer/EnergyMakers/Node2D" instance=ExtResource( 3 )]
 margin_left = 208.0
@@ -149,6 +164,10 @@ margin_right = 295.0
 margin_bottom = 84.0
 texture = ExtResource( 12 )
 icon = "WindPowerPlant"
+cost = "25k"
+pollution = "0"
+energy = "20 kW"
+money = "-600/yr"
 
 [node name="Nuclear" parent="CanvasLayer/UI/TabContainer/EnergyMakers/Node2D" instance=ExtResource( 3 )]
 margin_left = 308.0
@@ -158,6 +177,10 @@ margin_bottom = 127.0
 rect_scale = Vector2( 0.66, 0.66 )
 texture = ExtResource( 13 )
 icon = "NuclearPowerPlant"
+cost = "100M"
+pollution = "0"
+energy = "10 MW"
+money = "-2.5M/yr"
 
 [node name="Enviromental" type="Tabs" parent="CanvasLayer/UI/TabContainer"]
 visible = false
@@ -177,6 +200,10 @@ margin_right = 70.0
 margin_bottom = 89.0
 texture = ExtResource( 11 )
 icon = "Park"
+cost = "5k"
+pollution = "-4 ton/yr"
+energy = "0"
+money = "1k/yr"
 
 [node name="Carbon" parent="CanvasLayer/UI/TabContainer/Enviromental/Node2D" instance=ExtResource( 3 )]
 margin_left = 84.0
@@ -185,6 +212,10 @@ margin_right = 154.0
 margin_bottom = 90.0
 texture = ExtResource( 14 )
 icon = "CarbonCapture"
+cost = "2.5M"
+pollution = "-2k ton/yr"
+energy = "-200 kW"
+money = "1k/yr"
 
 [node name="Upgraders" type="Tabs" parent="CanvasLayer/UI/TabContainer"]
 visible = false
@@ -205,6 +236,10 @@ margin_right = 66.0
 margin_bottom = 91.0
 texture = ExtResource( 18 )
 icon = "Office"
+cost = "1M"
+pollution = "2 ton/yr"
+energy = "-50 kW"
+money = "10k/yr"
 
 [node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/UI"]
 margin_right = 40.0

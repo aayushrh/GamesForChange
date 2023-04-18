@@ -53,4 +53,4 @@ var sellEcoHotel = 300
 var sellWarehouse = 300
 var sellSchool = 300
 
-var turnTime = 1
+var turnTime = 5

@@ -8,9 +8,9 @@ func _ready():
 	upgradeRad = GameConstants.upgradeRadOffice
 	shape.extents = GameConstants.officeExtents
 	sell_money = GameConstants.sellOffice
-	pollution = 2.0/60.0
-	money = 10_000.0/60.0
-	energy = -50.0/60.0
+	pollution = 2.0/60.0*GameConstants.turnTime
+	money = 10_000.0/60.0*GameConstants.turnTime
+	energy = -50.0/60.0*GameConstants.turnTime
 	$Timer.start(GameConstants.turnTime)
 
 func _process(delta):

@@ -4,9 +4,9 @@ func _ready():
 	shape = RectangleShape2D.new()
 	shape.extents = GameConstants.factoryExtents
 	sell_money = GameConstants.sellFactory
-	pollution = 500.0/60.0
-	money = 1_000_000.0/60.0
-	energy = -450.0/60.0
+	pollution = 500.0/60.0*GameConstants.turnTime
+	money = 1_000_000.0/60.0*GameConstants.turnTime
+	energy = -450.0/60.0*GameConstants.turnTime
 	$Timer.start(GameConstants.turnTime)
 
 func _process(delta):

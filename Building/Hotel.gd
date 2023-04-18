@@ -4,9 +4,9 @@ func _ready():
 	shape = RectangleShape2D.new()
 	shape.extents = GameConstants.ecoHotelExtents
 	sell_money = GameConstants.sellEcoHotel
-	pollution = -2.0/60.0
-	money = 80_000.0/60.0
-	energy = -5.0/60.0
+	pollution = -2.0/60.0*GameConstants.turnTime
+	money = 80_000.0/60.0*GameConstants.turnTime
+	energy = -5.0/60.0*GameConstants.turnTime
 	$Timer.start(GameConstants.turnTime)
 
 func _process(delta):

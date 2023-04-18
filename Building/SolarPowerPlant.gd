@@ -5,8 +5,8 @@ func _ready():
 	shape.extents = GameConstants.solarPowerPlantExtents
 	sell_money = GameConstants.sellSolarPowerPlant
 	pollution = 0
-	money = -2_000.0/60.0
-	energy = 100.0/60.0
+	money = -2_000.0/60.0*GameConstants.turnTime
+	energy = 100.0/60.0*GameConstants.turnTime
 	$Timer.start(GameConstants.turnTime)
 
 func _process(delta):
