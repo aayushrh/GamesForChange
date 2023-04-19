@@ -10,6 +10,11 @@ var _target_zoom: float = 1.0
 
 onready var _tween: Tween = $Tween
 
+var llimit_left = 0
+var llimit_right = 0
+var llimit_bottom = 0
+var llimit_top = 0
+
 
 func _physics_process(delta: float) -> void:
 	zoom = lerp(zoom, _target_zoom * Vector2.ONE, ZOOM_RATE * delta)
@@ -27,7 +32,8 @@ func _unhandled_input(event: InputEvent) -> void:
 				#focus_position(get_global_mouse_position())
 	if event is InputEventMouseMotion:
 		if event.button_mask == BUTTON_MASK_RIGHT:
-			position -= event.relative * zoom
+			if(in_thing(position - event.relative * zoom)):
+				position -= event.relative * zoom
 
 
 func zoom_in() -> void:
@@ -42,5 +48,13 @@ func zoom_out() -> void:
 
 func focus_position(target_position: Vector2) -> void:
 	_tween.stop(self, "position")
-	_tween.interpolate_property(self, "position", position, target_position, 0.2, Tween.TRANS_EXPO)
-	_tween.start()
+	if(in_thing(target_position)):
+		_tween.interpolate_property(self, "position", position, target_position, 0.2, Tween.TRANS_EXPO)
+		_tween.start()
+
+func in_thing(position):
+	if(position.x > llimit_right or position.x < llimit_left):
+		return false
+	if(position.y > llimit_bottom or position.y < llimit_top):
+		return false
+	return true
