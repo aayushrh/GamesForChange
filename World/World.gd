@@ -11,6 +11,9 @@ var pollutionReq = 0
 var energyReq = 0
 var pollutionDelta = 0
 var energyDelta = 0
+var pollution
+var money
+var energy
 
 onready var CoalPlant = preload("res://Building//CoalPlant.tscn")
 onready var Office = preload("res://Building//Office.tscn")
@@ -26,6 +29,16 @@ onready var Hotel = preload("res://Building//Hotel.tscn")
 onready var Green_Box = preload("res://Misc//Green_Box.tscn")
 onready var Red_Box = preload("res://Misc//Red_Box.tscn")
 onready var Upgraders = preload("res://Misc//Upgraders.tscn")
+
+func abbreviate(number):
+	var moneystr = ""
+	if(abs(number) >= 1000000):
+		moneystr = str(round(number/100000)/10.0) + " M"
+	elif(abs(Manager.money) >= 1000):
+		moneystr = str(round(number/100)/10.0) + " K"
+	else:
+		moneystr = str(number)
+	return(moneystr)
 
 func _ready():
 	$PanningCamera2D.limit_top = $LimitTopRight.global_position.y
@@ -94,9 +107,9 @@ func _unhandled_input(event):
 			update()
 
 func _process(delta):
-	var pollution = 0
-	var money = 0
-	var energy = 0
+	pollution = 0
+	money = 0
+	energy = 0
 	for b in buildings:
 		pollution += b.pollution
 		money += b.money
@@ -114,13 +127,7 @@ func _process(delta):
 	
 	money = round(money * 100)/100
 	
-	var moneystr = ""
-	if(abs(money) >= 1000000):
-		moneystr = str(round(money/1000000)) + " M"
-	elif(abs(money) >= 1000):
-		moneystr = str(round(money/1000)) + " K"
-	else:
-		moneystr = str(money)
+	var moneystr = abbreviate(money)
 	
 	if(money > 0):
 		$CanvasLayer/UI/VBoxContainer/Delta/Money.text = "+" + moneystr
@@ -135,13 +142,7 @@ func _process(delta):
 		$CanvasLayer/UI/VBoxContainer/Delta/Energy.text = str(round(energy))
 	update()
 	
-	moneystr = ""
-	if(abs(Manager.money) >= 1000000):
-		moneystr = str(round(Manager.money/1000000)) + " M"
-	elif(abs(Manager.money) >= 1000):
-		moneystr = str(round(Manager.money/1000)) + " K"
-	else:
-		moneystr = str(Manager.money)
+	moneystr = abbreviate(Manager.money)
 	
 	$CanvasLayer/UI/VBoxContainer/Total/Money.text = moneystr
 	$CanvasLayer/UI/VBoxContainer/Total/Energy.text = str(round(Manager.energy))

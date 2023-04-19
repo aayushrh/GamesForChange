@@ -8,3 +8,5 @@ var energy = 0
 var pollution = 0
 
 var spawned_house = false
+
+var thousandpol = false

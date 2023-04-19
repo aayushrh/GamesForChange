@@ -9,9 +9,11 @@ var pollution = 0
 var money = 0
 var energy = 0
 var affected = []
+var popup_scene = preload("res://Building//PopupText.tscn")
+var label_offset = Vector2(-20, -10)
 
 export(int) var sell_money
-
+	
 func _unhandled_input(event):
 	if event is InputEventScreenTouch and selected:
 		get_tree().current_scene.selected = []

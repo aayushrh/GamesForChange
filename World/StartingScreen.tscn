@@ -24,7 +24,7 @@ texture = ExtResource( 3 )
 
 [node name="Sprite" type="Sprite" parent="."]
 position = Vector2( 323, 186 )
-scale = Vector2( 0.4, 0.4 )
+scale = Vector2( 0.45, 0.45 )
 z_index = 1
 texture = ExtResource( 2 )
 
